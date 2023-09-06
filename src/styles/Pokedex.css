@@ -1,0 +1,55 @@
+.ocoro {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.card-img-top {
+  display: flex;
+  background-size: contain;
+  height: 100px;
+}
+
+.card {
+  display: flex;
+  background-color: yellowgreen;
+  width: 300px;
+  height: 170px;
+  flex-direction: row-reverse !important;
+  border-style: double;
+  flex-direction: column;
+  margin: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.type_container
+{
+  display: flex;
+}
+
+.type
+{
+  width: 50px;
+  height: 50px;
+  display: flex;
+  border-radius: 50px;
+  background: #000000;
+  justify-content: center;
+  margin: 1px;
+}
+
+.type-icon
+{
+  width: 25px;
+}
