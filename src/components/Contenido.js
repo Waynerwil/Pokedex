@@ -4,7 +4,7 @@ import "../styles/Contenido.css";
 function Contenido() {
   return (
     <div>
-      <h1>Tipos de Pokemon</h1>
+      <h1 className="chacha">Tipos de Pokemon</h1>
       <p className="text">
         Existen 18 tipos en los que se organiza a los pokémon. Los tipos acero y
         siniestro fueron agregados en el año 2000, en los juegos Gold, Silver y
