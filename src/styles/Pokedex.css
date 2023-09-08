@@ -1,9 +1,13 @@
 .ocoro {
-  display: grid;
+   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(4, 1fr);
   grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  grid-row-gap: 0px; 
+
+
+  
+  
 }
 
 .card-img-top {
@@ -28,18 +32,17 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.pagination {
+/* .pagination {
   display: flex;
   justify-content: center;
-}
+  background-color: ;
+} */
 
-.type_container
-{
+.type_container {
   display: flex;
 }
 
-.type
-{
+.type {
   width: 50px;
   height: 50px;
   display: flex;
@@ -49,20 +52,36 @@
   margin: 1px;
 }
 
-.type-icon
-{
+.type-icon {
   width: 25px;
 }
 
-.form-control{
+.form-control {
   width: 55%;
   display: inline-block;
   margin-right: 5px;
 }
-.imgsearch{
+.imgsearch {
   width: 40px;
   height: 40px;
   border-radius: 10px;
   background-color: yellow;
   cursor: pointer;
+}
+
+/* .page-link {
+  background: #a8ff78;
+  background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78);
+  background: linear-gradient(to right, #78ffd6, #a8ff78);
+  color: #000000;
+} */
+
+.parent {
+  display: grid !important; 
+  grid-template-columns: 1fr !important;
+  grid-template-rows: 1fr !important;
+  grid-column-gap: 0px !important;
+  grid-row-gap: 0px !important;
+  .div1 { grid-area: 1 / 1 / 2 / 2 !important; }
   }
+  

@@ -2,23 +2,17 @@ import React, { useState, useEffect } from "react";
 import { getPokemonList } from "../components/Api";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Pokedex.css";
-import searchIcon from '../images/search-question-svgrepo-com.svg'
+import searchIcon from "../images/search-question-svgrepo-com.svg";
+import Carta from "../components/Carta";
+import { useParams } from "react-router-dom";
 
-// import Busqueda from "../components/Busqueda";
-// import { useNavigate } from "react-router-dom";
+
 
 function Pokedex() {
-  const [pokemonData, setPokemonData] = useState(null);
+  const [pokemonData, setPokemonData] = useState([]);
   const [Isloading, setIsloading] = useState(false);
-  const [filterPokemones, setfilterPokemones] = useState(null);
-
-
-  const busqueda = () => {
-    var pokemonS= document.getElementById("search").value;
-    const filtrados  = pokemonData.filter(pokemon => pokemon.name == pokemonS);
-    console.log(filtrados);
-    setfilterPokemones(filtrados)
-  }
+  const [filterPokemones, setfilterPokemones] = useState("");
+  
 
 
 
@@ -32,12 +26,9 @@ function Pokedex() {
 
         const data = response.array;
 
-       
         // console.log(filterPokemones)
 
         setPokemonData(data);
-
-        
       } catch (error) {
         console.error("Error capturando la pokemon data", error);
       }
@@ -45,28 +36,57 @@ function Pokedex() {
       setIsloading(true);
     };
     fetchPokemon();
+  }, []);
+
+  function irDetalle() {
+ 
+    console.log(pokemonData[0].id)
+    window.open(`/Pokedex/detalle/:id`)
   }
   
-  , []);
 
- 
-  
 
-  return (
-    <div className="ocoro">
+  const handleSearch = (e) => {
+    setfilterPokemones(e.target.value);
+  };
+  const filteredPokemon = pokemonData.filter(
+    (pokemon) =>
+      pokemon.name
+        .toLowerCase()
+        .trim()
+        .includes(filterPokemones.toLowerCase().trim()) || // Filtrar por nombre
+        pokemon.id.toString().includes(filterPokemones) // Filtrar por ID
+        );
+        return (
+    <div>
       {/* <Busqueda/> */}
       <div className="searched">
-            <label htmlFor="search"><img className="imgsearch" src={searchIcon} alt="pokemon"/></label>
-            <input id="search" type="text" placeholder="Search" onChange={busqueda}/>
-        </div>
+        <label htmlFor="search">
+          <img className="imgsearch" src={searchIcon} alt="pokemon" />
+        </label>
+        <input
+          id="search"
+          type="text"
+          placeholder="Search"
+          value={filterPokemones}
+          onChange={handleSearch}
+          />
+      </div>
       <div></div>
       <div></div>
+
+
+      <div className="ocoro">
       {Isloading ? (
-        pokemonData.map((item) => {
+        filteredPokemon.map((item) => {
+          <Carta />;
           return (
+            
             <div className="crc">
               <div className="card">
-                <img src={item.image} class="card-img-top" alt="Pokemon" />
+                <button onClick={irDetalle}>HOLA</button>
+                {/* <button onClick={() => showInfo(pokemon)}>inspeccionar</button> */}
+                <img src={item.image} className="card-img-top" alt="Pokemon" />
                 <div className="card-body">
                   <h5 className="card-title">Nombre: {item.name}</h5>
                   <p className="card-text">#0{item.id}</p>
@@ -77,7 +97,7 @@ function Pokedex() {
                         <img
                           className="type-icon"
                           src={require(`../images/${item.type[0]}.svg`)}
-                        />
+                          />
                       </div>
                     ) : null}
                     <br></br>
@@ -93,41 +113,62 @@ function Pokedex() {
                 </div>
               </div>
             </div>
+          
+
           );
         })
-      ) : (
-        <p>Cargando información ...</p>
-      )}
-      <nav aria-label="Page navigation example">
+        ) : (
+          <p>Cargando información ...</p>
+          )}
+
+
+      </div>
+
+      <div className="prueba">
+      <div class="parent">
+        <div class="div1"><nav aria-label="Page navigation example ">
         <ul className="pagination">
-          <li className="page-item">
-            <a className="page-link" href="#">
-              Previous
-            </a>
-          </li>
-          <li className="page-item">
-            <a className="page-link" href="#">
-              1
-            </a>
-          </li>
-          <li className="page-item">
-            <a className="page-link" href="#">
-              2
-            </a>
-          </li>
-          <li className="page-item">
-            <a className="page-link" href="#">
-              3
-            </a>
-          </li>
-          <li className="page-item">
-            <a className="page-link" href="#">
-              Next
-            </a>
-          </li>
+          <a className="page-link" href="#">
+            Previous
+          </a>
+
+          <a className="page-link" href="#">
+            1
+          </a>
+
+          <a className="page-link" href="#">
+            2
+          </a>
+
+          <a className="page-link" href="#">
+            3
+          </a>
+
+          <a className="page-link" href="#">
+            4
+          </a>
+
+          <a className="page-link" href="#">
+            5
+          </a>
+
+          <a className="page-link" href="#">
+            6
+          </a>
+
+          <a className="page-link" href="#">
+            7
+          </a>
+
+          <a className="page-link" href="#">
+            Next
+          </a>
         </ul>
-      </nav>
-    </div>
+      </nav> </div>
+      </div>
+      
+      </div>
+          </div>
   );
 }
 export default Pokedex;

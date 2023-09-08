@@ -3,14 +3,14 @@ import React from "react";
 function Carta() {
     return (
         <div>
-          <Link to={"/detalle"}>
+          {/* <Link to={"/detalle"}>
             {pokemonData ? (
                             <div className="crc">
-                            <div class="card">
-                              <img src={item.image} class="card-img-top" alt="Pokemon" />
-                              <div class="card-body">
-                                <h5 class="card-title">Nombre: {item.name}</h5>
-                                <p class="card-text">#0{item.id}</p>
+                            <div className="card">
+                              <img src={item.image} className="card-img-top" alt="Pokemon" />
+                              <div className="card-body">
+                                <h5 className="card-title">Nombre: {item.name}</h5>
+                                <p className="card-text">#0{item.id}</p>
                               </div>
                             </div>
                           </div>
@@ -18,7 +18,7 @@ function Carta() {
               <div></div>
             )}
     
-          </Link>
+          </Link> */}
         </div>
       );
 }
