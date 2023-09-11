@@ -28,7 +28,7 @@ export async function getPokemonList (url) {
      return result;
   }
  
-  async function getPokemonDetailByUrl(url) {
+export async function getPokemonDetailByUrl(url) {
      try {
          // obtener el detalle de cada pokemon
          const response = await fetch(url);
