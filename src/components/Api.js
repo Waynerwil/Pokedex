@@ -46,3 +46,31 @@ export async function getPokemonDetailByUrl(url) {
        throw error;  
      }
   }
+
+
+
+  export async function postpokemonlike(id) {
+    try {
+        const url = "https://6500d76818c34dee0cd57375.mockapi.io/favoritos/pokemon"
+        return fetch(url,{
+                method: "POST", 
+                headers: {
+                    "Content-Type":"application/json",
+                },
+                body: JSON.stringify({idPokemon: id})
+            }
+        ).then(
+            (res) => {
+                if (res.ok) {
+                    console.log("Datos guardados");
+                } else {
+                    
+                }
+            }
+        )
+        
+    } catch (error) {
+      console.error (" Error capturando el detalle", error);
+      throw error;  
+    }
+  }

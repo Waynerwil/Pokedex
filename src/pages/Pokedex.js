@@ -1,29 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { getPokemonList } from "../components/Api";
+import { getPokemonList, postpokemonlike } from "../components/Api";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Pokedex.css";
-import searchIcon from "../images/search-question-svgrepo-com.svg";
 import Carta from "../components/Carta";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 
+import like_up_img from "../images/up_thumbs_icon_255876.svg";
+
+
 function Pokedex() {
   const [pokemonData, setPokemonData] = useState([]);
   const [Isloading, setIsloading] = useState(false);
-  const [filterPokemones, setfilterPokemones] = useState("");
-  const [pokemon, setPokemon] = useState();
-
+  const [filterPokemones,  setfilterPokemones] = useState("");
   useEffect(() => {
     const fetchPokemon = async () => {
       try {
         const url = "https://pokeapi.co/api/v2/pokemon?limit=20";
-        // const fetchedPokemon = [];
         const response = await getPokemonList(url);
-        // const navigate = useNavigate();
 
         const data = response.array;
 
-        // console.log(filterPokemones)
 
         setPokemonData(data);
       } catch (error) {
@@ -53,6 +50,13 @@ function Pokedex() {
     }
 }
 
+async function likepokemon(id){
+  const add = await postpokemonlike(id);
+  alert(id)
+  
+
+}
+
   function irDetalle(pokemon) {
     console.log(pokemon.id);
     window.open(`/detalle/${pokemon.id}`);
@@ -71,17 +75,7 @@ function Pokedex() {
   );
   return (
     <div className="pokepoke">
-      {/* <Busqueda/> */}
-      {/* <div className="searched">
-        <label htmlFor="search">
-          <img className="imgsearch" src={searchIcon} alt="pokemon" />
-        </label>
-        <input
-          id="search"
-          type="text"
-          placeholder="Search"
-          />
-        </div> */}
+
 
 
       <div class="group">
@@ -99,8 +93,6 @@ function Pokedex() {
         />
       </div>
 
-      {/* <div></div>
-      <div></div> */}
 
       <div className="ocoro">
         {Isloading ? (
@@ -112,6 +104,13 @@ function Pokedex() {
                   <button className="info" onClick={() => irDetalle(item)}>
                     INFO
                   </button>
+
+                  <div className="btn_container">
+
+                    <div onClick={() => likepokemon(item.id)} className="like"><img src={like_up_img}/></div>
+
+                  </div>
+
                   <img
                     src={item.image}
                     className="card-img-top"
