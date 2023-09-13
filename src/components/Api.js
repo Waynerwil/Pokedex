@@ -74,3 +74,53 @@ export async function getPokemonDetailByUrl(url) {
       throw error;  
     }
   }
+  export async function getpokemonlike() {
+    try {
+        const requestPokemon = await fetch("https://6500d76818c34dee0cd57375.mockapi.io/favoritos/pokemon");
+        const pokemonData = await requestPokemon.json()
+        
+        return pokemonData;
+    } catch (error) {
+      console.error (" Error capturando el detalle", error);
+      return [];  
+    }
+  }
+  export async function deletePokemonesFavoritos(idP) {
+    try {
+        const getPokemones = await getpokemonlike();
+        let deleteId = '';
+
+        const verificar = getPokemones.some(({IdPokemon,id}) =>{
+            if (IdPokemon == idP) {
+                deleteId = id;
+            }
+        })
+
+        console.log(verificar);
+
+        return fetch(`https://6500d76818c34dee0cd57375.mockapi.io/favoritos/${deleteId}`,
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        ).then((res) => {
+          if (res.ok) {
+            console.log("Datos eliminados en mockupApi");
+          } else {
+            throw Error;
+          }
+        });
+
+        // return pokemonfavoritosData;
+
+    } catch (error) { //Se ejecuta si hubo algun error
+        console.error("Hubo un error al llamar al api")
+        return []
+    }
+
+}
+
+
+  

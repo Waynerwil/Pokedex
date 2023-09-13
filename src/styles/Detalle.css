@@ -1,0 +1,51 @@
+.papa {
+  display: flex;
+  text-align: center;
+  width: 349px;
+  height: 200px;
+  border-radius: 50px;
+  border-style: double;
+  background-image: url(https://i.pinimg.com/originals/83/a2/3f/83a23f69e15c54ae90883abb674c95f1.gif);
+  background-size: cover;
+  padding: 10px;
+  margin: 50px;
+}
+
+.papa:hover {
+  transform: skew(-5deg, -10deg);
+}
+
+
+.hijo{
+    border-radius: 50px;
+    background-color: black;
+    width: auto;
+    height: 300px;
+    margin: 50px;
+    display: flex;
+    align-items: center;
+}
+
+#amarillo{
+    color: #ffff00;
+}
+
+#azul{
+    color: 	#0000FF;
+}
+
+#gris{
+    color: #808080;
+}
+
+#morado{
+    color: #800080;
+}
+
+#marron{
+    color:#804000 ;
+}
+
+#rojo{
+    color: #cf0e0e;
+}

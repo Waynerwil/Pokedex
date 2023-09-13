@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getPokemonDetailByUrl } from "./Api";
+import "../styles/Detalle.css"
 
 function Detalle() {
   const [Datapokemon, setPokemonData] = useState([]);
@@ -60,15 +61,18 @@ function Detalle() {
 
   return (
     <>
-      <div>
+      <div className="papa">
         <h2>{Datapokemon.name}</h2>
-        <h3>Hp: {Datapokemonhp}</h3>
-        <h3>Attack: {PokemonDataAttack}</h3>
-        <h3>Defense: {PokemonDataDefense}</h3>
-        <h3>Special-attack: {PokemonDataSpecial}</h3>
-        <h3>Special-defense: {PokemonDataSPEA}</h3>
-        <h3>Speed: {PokemonDataSpeed}</h3>
         <img src={Datapokemon.image}></img>
+      </div>
+
+      <div className="hijo">
+        <h3 id="amarillo">Hp: {Datapokemonhp}</h3>
+        <h3  id="azul">Attack: {PokemonDataAttack}</h3>
+        <h3  id="gris">Defense: {PokemonDataDefense}</h3>
+        <h3 id="marron">Special-attack: {PokemonDataSpecial}</h3>
+        <h3  id="morado">Special-defense: {PokemonDataSPEA}</h3>
+        <h3  id="rojo">Speed: {PokemonDataSpeed}</h3>
 
       </div>
     </>

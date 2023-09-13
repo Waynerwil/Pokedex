@@ -5,14 +5,13 @@ import "../styles/Pokedex.css";
 import Carta from "../components/Carta";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-
 import like_up_img from "../images/up_thumbs_icon_255876.svg";
-
 
 function Pokedex() {
   const [pokemonData, setPokemonData] = useState([]);
+  const [valorse, setval] = useState();
   const [Isloading, setIsloading] = useState(false);
-  const [filterPokemones,  setfilterPokemones] = useState("");
+  const [filterPokemones, setfilterPokemones] = useState("");
   useEffect(() => {
     const fetchPokemon = async () => {
       try {
@@ -20,7 +19,6 @@ function Pokedex() {
         const response = await getPokemonList(url);
 
         const data = response.array;
-
 
         setPokemonData(data);
       } catch (error) {
@@ -30,32 +28,53 @@ function Pokedex() {
       setIsloading(true);
     };
     fetchPokemon();
-  }, []);
+
+ 
+    
+  },
+  
+  []);
+
+
+     async function likepokemon (id) {
+      const add = await postpokemonlike(id);
+    
+      console.log(id);
+      //  const valor = ;
+      
+     
+    };
+
 
   const handlePagination = async (e) => {
     var value = e.target.textContent;
     console.log(value);
     if (value == 1) {
-        var newUrl = 'https://pokeapi.co/api/v2/pokemon?limit=20';
-        var response = await getPokemonList(newUrl)
-        var data = response.array;
-        setPokemonData(data);
-  
+      var newUrl = "https://pokeapi.co/api/v2/pokemon?limit=20";
+      var response = await getPokemonList(newUrl);
+      var data = response.array;
+      setPokemonData(data);
     } else {
-        var newUrl =  `https://pokeapi.co/api/v2/pokemon?offset=${(value - 1) * 20}&limit=20 `;
-        var response = await getPokemonList(newUrl)
-        var data = response.array;
-        setPokemonData(data);
-  
+      var newUrl = `https://pokeapi.co/api/v2/pokemon?offset=${
+        (value - 1) * 20
+      }&limit=20 `;
+      var response = await getPokemonList(newUrl);
+      var data = response.array;
+      setPokemonData(data);
     }
-}
+  };
 
-async function likepokemon(id){
-  const add = await postpokemonlike(id);
-  alert(id)
-  
+ 
 
-}
+  // document.getElementById("").onclick = function () {
+  //   if (this.value == "suscribirse") {
+  //     this.value = "desuscribirse";
+  //   } else {
+  //     this.value = "suscribirse";
+  //   }
+  // };
+
+ 
 
   function irDetalle(pokemon) {
     console.log(pokemon.id);
@@ -73,11 +92,10 @@ async function likepokemon(id){
         .includes(filterPokemones.toLowerCase().trim()) || // Filtrar por nombre
       pokemon.id.toString().includes(filterPokemones) // Filtrar por ID
   );
+
+ 
   return (
     <div className="pokepoke">
-
-
-
       <div class="group">
         <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
           <g>
@@ -93,7 +111,6 @@ async function likepokemon(id){
         />
       </div>
 
-
       <div className="ocoro">
         {Isloading ? (
           filteredPokemon.map((item) => {
@@ -106,10 +123,17 @@ async function likepokemon(id){
                   </button>
 
                   <div className="btn_container">
-
-                    <div onClick={() => likepokemon(item.id)} className="like"><img src={like_up_img}/></div>
-
+                    <div onClick={() => likepokemon(item.id)} className="like" id="like4" value="me gusta">
+                    
+                      <img src={like_up_img} />
+                   
+                      {/* <input type="submit" value="suscribirse"  id="id"></input> */}
+                    </div> 
                   </div>
+
+                  {/* <div>
+                      <input type="submit" value="suscribirse"  id="boton3"  onClick={() => likepokemon(item.id)}></input>
+                  </div> */}
 
                   <img
                     src={item.image}
@@ -152,15 +176,14 @@ async function likepokemon(id){
       <div className="prueba">
         <div class="parent">
           <div class="div1">
-      <Stack spacing={2}>
-        <Pagination
-          count={50}
-          variant="outlined"
-          color="primary"
-          onClick={handlePagination}
-        />
-      </Stack>
-            
+            <Stack spacing={2}>
+              <Pagination
+                count={50}
+                variant="outlined"
+                color="primary"
+                onClick={handlePagination}
+              />
+            </Stack>
           </div>
         </div>
       </div>
