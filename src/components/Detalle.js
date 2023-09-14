@@ -35,10 +35,6 @@ function Detalle() {
         const SA = data?.stats?.[3]['special-attack'];
         const SP = data?.stats?.[4]['special-defense']; 
         const speed = data?.stats?.[5].speed; 
-        console.log(SP)
-
-
-          
   
         
         setPokemonDataAttack(attack);
@@ -60,8 +56,9 @@ function Detalle() {
   console.log(Datapokemonhp);
 
   return (
-    <>
-      <div className="papa">
+    // <>
+    <div className="Hola">
+      <div className="papa2">
         <h2>{Datapokemon.name}</h2>
         <img src={Datapokemon.image}></img>
       </div>
@@ -73,9 +70,10 @@ function Detalle() {
         <h3 id="marron">Special-attack: {PokemonDataSpecial}</h3>
         <h3  id="morado">Special-defense: {PokemonDataSPEA}</h3>
         <h3  id="rojo">Speed: {PokemonDataSpeed}</h3>
+      </div>  
 
-      </div>
-    </>
+
+    </div>
   );
 }
 

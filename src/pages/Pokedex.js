@@ -1,17 +1,37 @@
 import React, { useState, useEffect } from "react";
-import { getPokemonList, postpokemonlike } from "../components/Api";
+import { deletePokemonesFavoritos, getPokemonList, postpokemonlike } from "../components/Api";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Pokedex.css";
 import Carta from "../components/Carta";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import like_up_img from "../images/up_thumbs_icon_255876.svg";
+import like_down_img from '../images/down_thumbs_icon_255875.svg';
 
 function Pokedex() {
   const [pokemonData, setPokemonData] = useState([]);
   const [valorse, setval] = useState();
   const [Isloading, setIsloading] = useState(false);
   const [filterPokemones, setfilterPokemones] = useState("");
+  const [likedpokemon, setLikedPokemon] = useState (false);
+  const [habilitar, sethabilitar]= useState(false);
+  const mockApi=[
+    {
+     "idPokemon": 1,
+     "id": "1"
+    },
+    {
+     "idPokemon": 2,
+     "id": "2"
+    },
+    {
+     "idPokemon": 5,
+     "id": "3"
+    },    {
+      "idPokemon": 4,
+      "id": "4"
+     }
+   ]
   useEffect(() => {
     const fetchPokemon = async () => {
       try {
@@ -25,23 +45,34 @@ function Pokedex() {
         console.error("Error capturando la pokemon data", error);
       }
 
+      
       setIsloading(true);
     };
     fetchPokemon();
-
- 
     
   },
   
   []);
 
 
+
      async function likepokemon (id) {
       const add = await postpokemonlike(id);
-    
-      console.log(id);
+
+      sethabilitar(true);
+      
+      // window.location.reload();
+      // console.log(id);
       //  const valor = ;
       
+     
+    };
+
+     async function deletePokemones (id) {
+       const delet = await deletePokemonesFavoritos(id);
+      
+       sethabilitar(false);
+      // console.log(id);
      
     };
 
@@ -123,12 +154,18 @@ function Pokedex() {
                   </button>
 
                   <div className="btn_container">
-                    <div onClick={() => likepokemon(item.id)} className="like" id="like4" value="me gusta">
-                    
+                    {}
+                  {/* {mockApi.some((pokemon)=> pokemon.idPokemon===item.id)? ( */}
+                  {habilitar == false? (
+                      <div onClick={() => likepokemon(item.id)} className="like" id="like4" >
                       <img src={like_up_img} />
-                   
                       {/* <input type="submit" value="suscribirse"  id="id"></input> */}
                     </div> 
+                    ) : (
+                      <div onClick={() => deletePokemones(item.id)} className="like" id="like4" >
+                        <img src={like_down_img} />
+                      </div>
+                    )}
                   </div>
 
                   {/* <div>

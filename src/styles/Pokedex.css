@@ -157,7 +157,12 @@ background-color: gold;
   background: #FFFFFF;
 }
 
+.like:active.color{
+  background-color: red;
+  color:red;
+}
 .like img
 {
   width: 20px;
 }
+

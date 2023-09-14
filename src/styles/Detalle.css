@@ -1,51 +1,63 @@
-.papa {
+
+
+.papa2 {
   display: flex;
   text-align: center;
   width: 349px;
   height: 200px;
   border-radius: 50px;
   border-style: double;
-  background-image: url(https://i.pinimg.com/originals/83/a2/3f/83a23f69e15c54ae90883abb674c95f1.gif);
+  background-image: url(https://assets.pokemon.com//assets/cms2-es-es/img/misc/virtual-backgrounds/masters/canyon.jpg);
   background-size: cover;
-  padding: 10px;
   margin: 50px;
+  padding: 20px;
 }
 
-.papa:hover {
+.papa2:hover {
   transform: skew(-5deg, -10deg);
 }
 
 
 .hijo{
     border-radius: 50px;
-    background-color: black;
-    width: auto;
+    background-image: url(https://assets.pokemon.com//assets/cms2-es-es/img/misc/virtual-backgrounds/masters/city.jpg);
+    width: 250PX;
     height: 300px;
     margin: 50px;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    background-size: cover;
 }
 
 #amarillo{
-    color: #ffff00;
+    color: #000000;
 }
 
 #azul{
-    color: 	#0000FF;
+    color: 	#000000;
 }
 
 #gris{
-    color: #808080;
+    color: #000000;
 }
 
 #morado{
-    color: #800080;
+    color: #000000;
 }
 
 #marron{
-    color:#804000 ;
+    color:#000000 ;
 }
 
 #rojo{
-    color: #cf0e0e;
+    color: #000000;
+}
+
+#click{
+    display: flex;
+}
+
+.Hola{
+    background-image: url(https://assets.pokemon.com//assets/cms2-es-es/img/misc/virtual-backgrounds/masters/forest.jpg);
 }

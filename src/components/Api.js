@@ -74,6 +74,7 @@ export async function getPokemonDetailByUrl(url) {
       throw error;  
     }
   }
+
   export async function getpokemonlike() {
     try {
         const requestPokemon = await fetch("https://6500d76818c34dee0cd57375.mockapi.io/favoritos/pokemon");
@@ -89,16 +90,16 @@ export async function getPokemonDetailByUrl(url) {
     try {
         const getPokemones = await getpokemonlike();
         let deleteId = '';
-
-        const verificar = getPokemones.some(({IdPokemon,id}) =>{
-            if (IdPokemon == idP) {
+        
+        const verificar = getPokemones.some(({idPokemon,id}) =>{
+            if (idPokemon == idP) {
                 deleteId = id;
             }
         })
 
-        console.log(verificar);
+        // console.log(verificar);
 
-        return fetch(`https://6500d76818c34dee0cd57375.mockapi.io/favoritos/${deleteId}`,
+        return fetch(`https://6500d76818c34dee0cd57375.mockapi.io/favoritos/pokemon/${deleteId}`,
           {
             method: "DELETE",
             headers: {
